@@ -38,18 +38,22 @@ function Homepage() {
     
     <ResponsiveAppBar/>
     <ThemeProvider theme={theme}>
-    <Box bgcolor="black" > 
-    
-    
+    <Box bgcolor="white" > 
+
+    <Grid sx={{ position: 'relative' }}> 
+    <Typography variant="h1" sx={{ position: 'absolute', zIndex: 1, top: 0, left: 0 }}>Find the service that you need</Typography>
+    <img  style={{ width: "100%", marginBottom: "1%", display: "inline-block" }} src="../../images/model2.jpeg" alt="Picture personal selection" />
+    </Grid> 
     {/* <img src="../../images/personal-selection.jpeg" alt="Picture personal selection"/> */}
 
-    <Grid container justifyContent="center" alignItems="center">
-        <img src="../../images/model.png" alt="Picture personal selection"/>
+    <Grid container justifyContent="center" alignItems="center" >
+        
         
         <Grid container spacing={2} >
             <Item >
-                <Button color="secondary" >
-                <CalendarMonthIcon fontSize='large'/> Book Dates
+                <Button color="secondary" onClick={event => alert("Book Dates")}>
+                <CalendarMonthIcon fontSize='large'
+                /> Book Dates
                 </Button>
             </Item>
             <Item >
