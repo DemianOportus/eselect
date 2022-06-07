@@ -1,6 +1,5 @@
 import React from 'react';
-import {Box, Grid, Typography, Button, ImageListItem } from '@mui/material';
-import ResponsiveAppBar from "../components/NavBar";
+import {Box, Grid, Typography, Button } from '@mui/material';
 //import img1  from "../images/personal-selection.jpeg";
 import styled from '@emotion/styled';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -34,20 +33,20 @@ function Homepage() {
         xs: 6,
         
     };
-    return <> 
-    
-    <ResponsiveAppBar/>
+    return (
+    <>     
     <ThemeProvider theme={theme}>
-    <Box bgcolor="white" > 
+    <Box > 
 
     <Grid sx={{ position: 'relative' }}> 
-    <Typography variant="h1" sx={{ position: 'absolute', zIndex: 1, top: 0, left: 0 }}>Find the service that you need</Typography>
-    <img  style={{ width: "100%", marginBottom: "1%", display: "inline-block" }} src="../../images/model2.jpeg" alt="Picture personal selection" />
+    <Typography fontSize= "8vw" fontFamily="Monserat" fontWeight="bold" color= "primary" variant="h1" sx={{ position: "absolute",  zIndex: 1, top: "10%", left: "5%"}}>
+    Find the service <br/> that you need at <br/> e-Selection</Typography>
+
+    {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+    <img  style={{ width: "100%", marginBottom: "1%", display: "inline-block" }} src="../../images/model2.jpeg" alt="model picture" />
     </Grid> 
-    {/* <img src="../../images/personal-selection.jpeg" alt="Picture personal selection"/> */}
 
     <Grid container justifyContent="center" alignItems="center" >
-        
         
         <Grid container spacing={2} >
             <Item >
@@ -72,9 +71,10 @@ function Homepage() {
                 <Button > <ConnectWithoutContactIcon fontSize='large'/> Contact us</Button>
             </Item>
         </Grid>
-</Grid>
-</Box>
-</ThemeProvider>
-</>
+    </Grid>
+    </Box>
+    </ThemeProvider>
+    </>
+    )
 }
 export default Homepage;
