@@ -33,9 +33,8 @@ function Homepage() {
         xs: 6,
         
     };
-    return <> 
-    
-    
+    return (
+    <>     
     <ThemeProvider theme={theme}>
     <Box > 
 
@@ -72,9 +71,10 @@ function Homepage() {
                 <Button > <ConnectWithoutContactIcon fontSize='large'/> Contact us</Button>
             </Item>
         </Grid>
-</Grid>
-</Box>
-</ThemeProvider>
-</>
+    </Grid>
+    </Box>
+    </ThemeProvider>
+    </>
+    )
 }
 export default Homepage;
