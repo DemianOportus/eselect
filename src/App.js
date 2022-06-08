@@ -7,8 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
 import BootstrapNavbar from "./components/NavBarBootstrap";
 
-
-
 function App() {
 
   return ( 
