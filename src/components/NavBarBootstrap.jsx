@@ -10,7 +10,7 @@ return (
     <Nav className="me-auto">
     </Nav>
     <Nav>
-      <Nav.Link href="#deets" style={{paddingRight: "5%"}}>Deets</Nav.Link>
+      <Nav.Link href="#Services" style={{paddingRight: "5%"}}>Services</Nav.Link>
       <Nav.Link href="#pricing" style={{paddingRight: "5%"}}>Pricing</Nav.Link>
       <Nav.Link href="#features" style={{paddingRight: "5%"}}>Features</Nav.Link>
       <NavDropdown title="My account" id="collasible-nav-dropdown">

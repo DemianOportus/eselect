@@ -7,12 +7,12 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 
 
 export default function MultiActionAreaCard(props) {
-  return (
-    <Card sx={{ maxWidth: 345, display: "inline-block"}}>
+  return ( 
+    <Card sx={{ display: "inline-block", margin: "2%", width: "300px"}}>
       <CardActionArea href={props.path}>
         <CardMedia
           component="img"
-          height="140"
+          height="200"
           image={props.imgURL}
           alt="green iguana"
         />
@@ -26,11 +26,12 @@ export default function MultiActionAreaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button href= "/booking"size="small" color="primary" sx={{textTransform: "none"}}>
+        <Button href= "/booking"size="small" color="primary" sx={{textTransform: "none", paddingLeft:"3%"}}>
           Book now
         </Button>
       </CardActions>
     </Card>
+
   );
 }
 

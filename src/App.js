@@ -15,6 +15,8 @@ import Booking from "./pages/booking";
 import Landscaping from "./pages/landscaping";
 import HouseCleaning from "./pages/houseCleaning";
 import LoremIpsum from "./pages/loremIpsum";
+import { Grid } from '@mui/material';
+import { spacing } from '@mui/system';
 
 
 function App() {
@@ -28,7 +30,9 @@ function App() {
       <div>
         <BootstrapNavbar />
         <Homepage />
+        <Grid container sx={{justifyContent: "center" }} > 
         {cards.map(MultiActionAreaCard)}
+        </Grid>
         <Footer />
       </div>
       } />
