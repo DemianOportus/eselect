@@ -126,16 +126,55 @@
   .error404page {
     padding-top: 7%;
     padding-left: 15%;
+    background: #1876D1;
+    font-family: "Montserrat";
+    color: white;
+    height: 100%;
   }
 
-  .oops {
+  #oops {
     font-size: 8vw;
+    font-weight: 500;
   }
 
-  .pageNotFound {
-
+  #pageNotFound {
+    font-size: 3vw;
+    padding-bottom: 1%;
   }
 
-  .errorCode {
+  #errorCode {
+    font-size: 2vw;
+    padding-bottom: 1%;
+  }
 
+
+  @media (max-width: 900px) {
+    .error404page {
+      padding: 15%;
+
+    }
+    #oops {
+      font-size: 12vw;
+    }
+    #pageNotFound {
+      font-size: 6vw;
+    }
+    #errorCode {
+      font-size: 4vw;
+    }
+  }
+
+  @media (min-width: 900px) and (max-width: 1200px) {
+    .error404page {
+      padding: 8% 12%;
+    }
+    #oops {
+      font-size: 10vw;
+    }
+    #pageNotFound {
+      font-size: 5vw;
+    }
+    #errorCode {
+      font-size: 3vw;
+    }
   }
