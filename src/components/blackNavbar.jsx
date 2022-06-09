@@ -1,8 +1,8 @@
 import { Navbar, Container, NavDropdown, Nav} from 'react-bootstrap';
 
-function BootstrapNavbar(){
+function BlackNavbar(){
 return (
-<Navbar collapseOnSelect expand="lg" variant="dark" style={{backgroundColor: "#1876D1"}}>
+<Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
   <Container className="customNavbar">
   <Navbar.Brand style={{margin: "0"}}>e-selection</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -27,4 +27,4 @@ return (
 );
 }
 
-export default BootstrapNavbar;
+export default BlackNavbar;

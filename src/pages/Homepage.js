@@ -44,7 +44,7 @@ function Homepage() {
     <img  style={{ width: "100%", marginBottom: "1%", display: "inline-block" }} src="../../images/model2.jpeg" alt="model picture" />
     </Grid> 
 
-    <Grid container justifyContent="center" alignItems="center" >
+    {/* <Grid container justifyContent="center" alignItems="center" >
         
         <Grid container spacing={2} >
             <Item >
@@ -68,7 +68,7 @@ function Homepage() {
                 <Button > <i class="fa-solid fa-envelope-circle-check"></i> Contact us</Button>
             </Item>
         </Grid>
-    </Grid>
+    </Grid> */}
     </Box>
     </ThemeProvider>
     </>
