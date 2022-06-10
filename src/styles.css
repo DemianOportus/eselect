@@ -99,13 +99,61 @@
     padding-bottom: 0.5%;
   }
 
-  /* Cards */
+  /* Homepage - Title & image */
 
-  .cardImage {
-    width: 100px !important;
+  @media (max-width:600px){
+    #titleText {
+      padding-top: 32px;
+      position: relative;
+      font-size: 50px;
+      text-align: center;
+      left: 0;
+      background-color: 1876D1;
+      color: white;
+      margin-bottom: 5%;
+      height: 35%;
+      font-weight: 500;
+    }
+
+    #titleImage {
+      width: 100%; 
+      height: 60%; 
+      object-fit: cover;
+      object-position: 100%;
+      margin-bottom: 0 !important;
+    }
   }
 
-  /* Footer */
+  @media (min-width:601px) and (max-width:752px){
+    #titleText {
+      padding: 3% 0% 5% 0%;
+      position: relative;
+      font-size: 8vw;
+      left: 0;
+      background-color: 1876D1;
+      text-align: center;
+      color: white;
+      margin-bottom: 5%;
+      font-weight: 500;
+    }
+
+    #titleImage {
+      width: 100%; 
+      height: 55%; 
+      object-fit: cover;
+      object-position: 90%;
+      margin-bottom: 0 !important;
+    }
+  }
+
+  /* Homepage - Cards */
+  @media (min-width:753px) and (max-width:1023px){
+    .serviceCards {
+      width: 220px !important;
+    }
+  }
+
+  /* Homepage - Footer */
 
   .footer-icon {
     margin: 20px 10px;

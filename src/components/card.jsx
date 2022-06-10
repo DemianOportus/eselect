@@ -8,7 +8,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 
 export default function MultiActionAreaCard(props) {
   return ( 
-    <Card sx={{ display: "inline-block", margin: "2%", width: "300px"}}>
+    <Card className="serviceCards"sx={{ display: "inline-block", margin: "2%", width: "300px"}}>
       <CardActionArea href={props.path}>
         <CardMedia
           component="img"

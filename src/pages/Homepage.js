@@ -37,38 +37,12 @@ function Homepage() {
     <Box > 
 
     <Grid sx={{ position: 'relative' }}> 
-    <Typography fontSize= "7vw" fontFamily="Montserrat" fontWeight="bold" color= "primary" variant="h1" sx={{ position: "absolute",  zIndex: 1, top: "20%", left: "5%"}}>
-    Find the service <br/> that you need <br/> at e-Selection</Typography>
-
-    {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-    <img  style={{ width: "100%", marginBottom: "1%", display: "inline-block" }} src="../../images/model2.jpeg" alt="model picture" />
+        {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+        <img id="titleImage" style={{ width: "100%", marginBottom: "1%", display: "inline-block" }} src="../../images/model2.jpeg" alt="model picture" />
+        <Typography id="titleText" fontSize= "7vw" fontFamily="Montserrat" fontWeight="bold" color= "primary" variant="h1" sx={{ position: "absolute",  zIndex: 1, top: "20%", left: "5%"}}>
+        Find the service <br/> that you need <br/> at e-Selection</Typography>
     </Grid> 
 
-    {/* <Grid container justifyContent="center" alignItems="center" >
-        
-        <Grid container spacing={2} >
-            <Item >
-                <Button color="secondary" onClick={event => alert("Book Dates")}>
-                <i class="fa-solid fa-calendar-lines-pen"></i> Book Dates
-                </Button>
-            </Item>
-            <Item >
-                <Button><LocationSearchingIcon fontSize='large'/>Whatever</Button>
-            </Item>
-            <Item >
-                <Button><LocationSearchingIcon fontSize='large'/>Whatever</Button>
-            </Item>
-            <Item >
-                <Button><LocationSearchingIcon fontSize='large'/>Whatever</Button>
-            </Item>
-            <Item >
-                <Button ><LocationSearchingIcon fontSize='large'/>Whatever</Button>
-            </Item>
-            <Item>
-                <Button > <i class="fa-solid fa-envelope-circle-check"></i> Contact us</Button>
-            </Item>
-        </Grid>
-    </Grid> */}
     </Box>
     </ThemeProvider>
     </>
