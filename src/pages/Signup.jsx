@@ -3,7 +3,8 @@ import React from "react";
 import { useState } from "react";
 
 function createUser(email, username, password, confirmPassword) {
-  fetch("/users", {
+  console.log("new user is working");
+  fetch("/api/newUser", {
     method: "POST",
     body: JSON.stringify({
       email: email,
