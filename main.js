@@ -23,18 +23,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const dataBase = getFirestore(app);
 
-let userCollection = collection(dataBase, "users");
-try {
-  let addUser = addDoc(userCollection, {
-    firstName: "Chris",
-    lastName: "Oportus",
-    age: 22,
-  });
-  console.log("added to dater base");
-} catch (error) {
-  console.log("Error:" + error);
-}
-
 eSelect.use(express.static(path.join(__dirname, "build")));
 eSelect.use(bodyParser.json());
 eSelect.get("/*", (req, res) => {
@@ -43,7 +31,7 @@ eSelect.get("/*", (req, res) => {
 
 eSelect.post("/api/newUser", (req, res) => {
   let data = req.body;
-  console.log(data);
+  console.log(data.email);
 });
 
 eSelect.listen(port, () => {
