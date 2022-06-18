@@ -1,4 +1,4 @@
-import BlackNavbar from "../components/blackNavbar";
+import BlackNavbar from "../components/blackNavbar.jsx";
 import React from "react";
 import { useState } from "react";
 
@@ -60,7 +60,7 @@ function Signup() {
 
         <button
           className="loginButton"
-          onClick={() => createUser(username, password, confirmPassword)}
+          onClick={() => createUser(email, username, password, confirmPassword)}
         >
           Sign up
         </button>
