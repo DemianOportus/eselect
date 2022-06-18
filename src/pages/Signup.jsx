@@ -1,4 +1,4 @@
-import BlackNavbar from "../components/blackNavbar";
+import BlackNavbar from "../components/blackNavbar.jsx";
 import React from "react";
 import { useState } from "react";
 
