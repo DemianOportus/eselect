@@ -1,5 +1,6 @@
 import * as React from "react";
 import Homepage from "./pages/Homepage.js";
+import Dashboard from "./pages/Dashboard.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import ResponsiveAppBar from "./components/NavBar";
 import "../src/styles.css";
@@ -44,6 +45,7 @@ function App() {
           <Route path="/houseCleaning" element={<HouseCleaning />} />
           <Route path="/loremIpsum" element={<LoremIpsum />} />
           <Route path="/landscaping" element={<Landscaping />} />
+          <Route path="/dashboard/:id" element={<Dashboard />} />
         </Routes>
       </>
     </Router>

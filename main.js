@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const eSelect = express();
 const port = 3000;
@@ -32,17 +33,18 @@ eSelect.get("/*", (req, res) => {
 
 eSelect.post("/api/newUser", (req, res) => {
   let data = req.body;
-  try {
-    addDoc(usersCollection, {
-      username: data.username,
-      email: data.email,
-      password: data.password,
+  let email = data.email;
+  let password = data.password;
+  const authentication = getAuth();
+  createUserWithEmailAndPassword(authentication, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user);
+    })
+    .catch((error) => {
+      console.log("Error code: " + error.code);
+      console.log("Error message: " + error.message);
     });
-    console.log("added a new user");
-  } catch (error) {
-    console.log("Error: " + error);
-  }
-  console.log(data);
 });
 
 eSelect.listen(port, () => {
