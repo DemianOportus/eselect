@@ -2,8 +2,6 @@ import React from 'react';
 import {Box, Grid, Typography, Button } from '@mui/material';
 //import img1  from "../images/personal-selection.jpeg";
 import styled from '@emotion/styled';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -39,39 +37,12 @@ function Homepage() {
     <Box > 
 
     <Grid sx={{ position: 'relative' }}> 
-    <Typography fontSize= "8vw" fontFamily="Monserat" fontWeight="bold" color= "primary" variant="h1" sx={{ position: "absolute",  zIndex: 1, top: "10%", left: "5%"}}>
-    Find the service <br/> that you need at <br/> e-Selection</Typography>
-
-    {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-    <img  style={{ width: "100%", marginBottom: "1%", display: "inline-block" }} src="../../images/model2.jpeg" alt="model picture" />
+        {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+        <img id="titleImage" style={{ width: "100%", marginBottom: "1%", display: "inline-block" }} src="../../images/model2.jpeg" alt="model picture" />
+        <Typography id="titleText" fontSize= "7vw" fontFamily="Montserrat" fontWeight="bold" color= "primary" variant="h1" sx={{ position: "absolute",  zIndex: 1, top: "20%", left: "5%"}}>
+        Find the service <br/> that you need <br/> at e-Selection</Typography>
     </Grid> 
 
-    <Grid container justifyContent="center" alignItems="center" >
-        
-        <Grid container spacing={2} >
-            <Item >
-                <Button color="secondary" onClick={event => alert("Book Dates")}>
-                <CalendarMonthIcon fontSize='large'
-                /> Book Dates
-                </Button>
-            </Item>
-            <Item >
-                <Button><LocationSearchingIcon fontSize='large'/>Whatever</Button>
-            </Item>
-            <Item >
-                <Button><LocationSearchingIcon fontSize='large'/>Whatever</Button>
-            </Item>
-            <Item >
-                <Button><LocationSearchingIcon fontSize='large'/>Whatever</Button>
-            </Item>
-            <Item >
-                <Button ><LocationSearchingIcon fontSize='large'/>Whatever</Button>
-            </Item>
-            <Item>
-                <Button > <ConnectWithoutContactIcon fontSize='large'/> Contact us</Button>
-            </Item>
-        </Grid>
-    </Grid>
     </Box>
     </ThemeProvider>
     </>
