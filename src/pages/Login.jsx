@@ -1,5 +1,6 @@
 import BlackNavbar from "../components/blackNavbar";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function verifyUser(email, password, navigate) {
   fetch("/login", {
@@ -18,15 +19,16 @@ function verifyUser(email, password, navigate) {
       }
       return response;
     })
-    .then(() => navigate("/homepage"))
-    .catch((response) => response)
     .then((response) => response.text())
-    .then((data) => alert(data));
+    .then((data) => alert(data))
+    .then(() => navigate("/"))
+    .catch((response) => response);
 }
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   return (
     <div className="loginPage">
       <BlackNavbar />
@@ -44,7 +46,7 @@ function Login() {
           placeholder="Password"
         ></input>
         <button
-          onClick={(event) => verifyUser(email, password)}
+          onClick={(event) => verifyUser(email, password, navigate)}
           className="loginButton"
         >
           Login
