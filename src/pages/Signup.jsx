@@ -1,30 +1,38 @@
 import BlackNavbar from "../components/blackNavbar.jsx";
 import React from "react";
 import { useState } from "react";
-
-function createUser(email, username, password, confirmPassword) {
-  console.log("new user is working");
-  fetch("/api/newUser", {
-    method: "POST",
-    body: JSON.stringify({
-      email: email,
-      username: username,
-      password: password,
-      confirmPassword: confirmPassword,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.text())
-    .then((data) => alert(data));
-}
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+
+  function createUser(email, username, password, confirmPassword) {
+    console.log("new user is working");
+    fetch("/api/newUser", {
+      method: "POST",
+      body: JSON.stringify({
+        email: email,
+        username: username,
+        password: password,
+        confirmPassword: confirmPassword,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        console.log(data.uid);
+      });
+  }
 
   return (
     <div className="loginPage">
@@ -60,7 +68,9 @@ function Signup() {
 
         <button
           className="loginButton"
-          onClick={() => createUser(email, username, password, confirmPassword)}
+          onClick={() => {
+            createUser(email, username, password, confirmPassword);
+          }}
         >
           Sign up
         </button>
