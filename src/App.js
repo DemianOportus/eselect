@@ -26,7 +26,7 @@ function App() {
         {/* <ResponsiveAppBar/> */}
         <Routes>
           <Route
-            path="/"
+            path="app/"
             element={
               <div>
                 <BootstrapNavbar />
@@ -38,14 +38,14 @@ function App() {
               </div>
             }
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/404" element={<Error404 />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="/houseCleaning" element={<HouseCleaning />} />
-          <Route path="/loremIpsum" element={<LoremIpsum />} />
-          <Route path="/landscaping" element={<Landscaping />} />
-          <Route path="/dashboard/:id" element={<Dashboard />} />
+          <Route path="app/login" element={<Login />} />
+          <Route path="app/signup" element={<Signup />} />
+          <Route path="app/404" element={<Error404 />} />
+          <Route path="app/booking" element={<Booking />} />
+          <Route path="app/houseCleaning" element={<HouseCleaning />} />
+          <Route path="app/loremIpsum" element={<LoremIpsum />} />
+          <Route path="app/landscaping" element={<Landscaping />} />
+          <Route path="app/dashboard/:id" element={<Dashboard />} />
         </Routes>
       </>
     </Router>

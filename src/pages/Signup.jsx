@@ -24,8 +24,14 @@ function Signup() {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.text())
-      .then(navigate("../dashboard/2"));
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        console.log(data.uid);
+      });
   }
 
   return (

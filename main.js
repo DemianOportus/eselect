@@ -4,7 +4,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const eSelect = express();
 const port = 3000;
@@ -27,7 +31,8 @@ let usersCollection = collection(dataBase, "user");
 
 eSelect.use(express.static(path.join(__dirname, "build")));
 eSelect.use(bodyParser.json());
-eSelect.get("/*", (req, res) => {
+//URL paths
+eSelect.get("/app/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build/index.html"));
 });
 
@@ -39,12 +44,26 @@ eSelect.post("/api/newUser", (req, res) => {
   createUserWithEmailAndPassword(authentication, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log(user);
+      console.log(user.uid);
+      res.json(user);
     })
     .catch((error) => {
       console.log("Error code: " + error.code);
       console.log("Error message: " + error.message);
     });
+});
+
+eSelect.post("/api/login", (req, res) => {
+  let data = req.body;
+  let auth = getAuth();
+  signInWithEmailAndPassword(auth, data.email, data.password)
+    .then((userInfo) => {
+      let user = userInfo.user;
+      console.log("login was a success.");
+      console.log(user);
+      res.json(user);
+    })
+    .catch((error) => console.log("Error: " + error.message));
 });
 
 eSelect.listen(port, () => {
