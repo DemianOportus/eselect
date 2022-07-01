@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext.js";
 
 import Alert from "@mui/material/Alert";
-import { async } from "@firebase/util";
 
 function Signup() {
   let auth = useAuth();
@@ -16,7 +15,6 @@ function Signup() {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  let alertRef = useRef();
 
   function signUpCheck(email, password, confirmPassword) {
     let success = true;
@@ -52,6 +50,7 @@ function Signup() {
     let result = signUpCheck(email, password, confirmPassword);
     if (result === true) {
       await auth.signup(email, password);
+      auth.getCurrentUser();
       if (auth.error === "Firebase: Error (auth/invalid-email).") {
         setErrorMessage("This email is invalid.");
         setError(true);
@@ -68,7 +67,7 @@ function Signup() {
         <p className="welcome">Join us today!</p>
         <h1>Sign up for free</h1>
         {error && (
-          <Alert ref={alertRef} variant="filled" severity="error">
+          <Alert variant="filled" severity="error">
             {errorMessage}
           </Alert>
         )}

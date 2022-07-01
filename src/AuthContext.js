@@ -45,8 +45,8 @@ export function AuthProvider(props) {
         setUser(userCredential.user);
       })
       .catch((e) => {
-        console.log("Login Error: " + typeof e.message);
-        setError(e.email);
+        console.log("Login Error: " + e.message);
+        setError(e.message);
       });
   }
 

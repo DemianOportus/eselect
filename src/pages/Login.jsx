@@ -1,19 +1,49 @@
 import BlackNavbar from "../components/blackNavbar.jsx";
 import { useState } from "react";
 import { useAuth } from "../AuthContext.js";
-import { async } from "@firebase/util";
+import Alert from "@mui/material/Alert";
 
 function Login() {
   let auth = useAuth();
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  function loginCheck(email, password) {
+    let success = true;
+    console.log(">>" + email);
+    if (email === "") {
+      setErrorMessage("Please enter an email address");
+      success = false;
+      return success;
+    }
+    if (password === "") {
+      setErrorMessage("Please enter a password");
+      success = false;
+      return success;
+    }
+    return success;
+  }
 
   async function login(email, password) {
-    console.log(">" + email);
-    console.log(">" + password);
-    await auth.login(email, password);
-    auth.getCurrentUser();
+    let result = loginCheck(email, password);
+    console.log(result);
+    if (result === true) {
+      await auth.login(email, password);
+      auth.getCurrentUser();
+      if (auth.error === "Firebase: Error (auth/invalid-email).") {
+        setErrorMessage("This email is invalid.");
+        setError(true);
+      } else if (auth.error === "Firebase: Error (auth/wrong-password).") {
+        setErrorMessage("This password is incorrect.");
+        setError(true);
+      }
+    } else {
+      setError(true);
+    }
   }
 
   return (
@@ -22,7 +52,11 @@ function Login() {
       <div className="loginText">
         <p className="welcome">Welcome back!</p>
         <h1>Sign in to e-selection</h1>
-        {/**auth.user.email == !undefined && <h1>{auth.user.email}</h1>**/}
+        {error && (
+          <Alert variant="filled" severity="error">
+            {errorMessage}
+          </Alert>
+        )}
         <input
           className="loginInput"
           placeholder="Email"
