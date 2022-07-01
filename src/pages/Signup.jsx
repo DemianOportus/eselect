@@ -1,37 +1,49 @@
 import BlackNavbar from "../components/blackNavbar.jsx";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext.js";
+
+import Alert from "@mui/material/Alert";
+import { async } from "@firebase/util";
 
 function Signup() {
+  let auth = useAuth();
+
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  let alertRef = useRef();
 
-  function createUser(email, username, password, confirmPassword) {
-    console.log("new user is working");
-    fetch("/api/newUser", {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-        username: username,
-        password: password,
-        confirmPassword: confirmPassword,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        console.log(data.uid);
-      });
+  async function createUser(email, password, confirmPassword) {
+    if (password === confirmPassword) {
+      setError(false);
+      await auth.signup(email, password);
+      if (auth.error === "") {
+        auth.getCurrentUser();
+      } else {
+        if (auth.error === "Firebase: Error (auth/missing-email).") {
+          setErrorMessage("No email address was provided");
+        } else if (auth.error === "Firebase: Error (auth/invalid-email).") {
+          setErrorMessage("This email address is invalid.");
+        } else if (
+          auth.error ===
+          "Firebase: Password should be at least 6 characters (auth/weak-password)."
+        ) {
+          setErrorMessage("Password must be at least 6 characters");
+        }
+
+        setError(true);
+        console.log(">" + auth.error);
+      }
+    } else {
+      setErrorMessage("Password dose not match.");
+
+      setError(true);
+    }
   }
 
   return (
@@ -40,6 +52,12 @@ function Signup() {
       <div className="loginText">
         <p className="welcome">Join us today!</p>
         <h1>Sign up for free</h1>
+        {error && (
+          <Alert ref={alertRef} variant="filled" severity="error">
+            {errorMessage}
+          </Alert>
+        )}
+
         <input
           onChange={(event) => setEmail(event.target.value)}
           value={email}
@@ -47,12 +65,7 @@ function Signup() {
           placeholder="Email"
         />
         <input
-          onChange={(event) => setUsername(event.target.value)}
-          value={username}
-          className="loginInput"
-          placeholder="Username"
-        />
-        <input
+          type="password"
           onChange={(event) => setPassword(event.target.value)}
           value={password}
           className="loginInput"
@@ -60,6 +73,7 @@ function Signup() {
         />
 
         <input
+          type="password"
           onChange={(event) => setConfirmPassword(event.target.value)}
           value={confirmPassword}
           className="loginInput"
@@ -68,8 +82,9 @@ function Signup() {
 
         <button
           className="loginButton"
-          onClick={() => {
-            createUser(email, username, password, confirmPassword);
+          onClick={(e) => {
+            e.preventDefault();
+            createUser(email, password, confirmPassword);
           }}
         >
           Sign up

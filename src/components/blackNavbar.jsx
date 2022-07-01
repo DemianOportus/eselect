@@ -1,10 +1,12 @@
 import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
+import { useAuth } from "../AuthContext";
 
 function BlackNavbar() {
+  let auth = useAuth();
   return (
     <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
       <Container className="customNavbar">
-        <Navbar.Brand href="../app/" style={{ margin: "0" }}>
+        <Navbar.Brand href="/" style={{ margin: "0" }}>
           e-selection
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -25,7 +27,14 @@ function BlackNavbar() {
               <NavDropdown.Item href="./signup">Sign up</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Log out</NavDropdown.Item>
+              <NavDropdown.Item
+                href="#action/3.4"
+                onClick={() => {
+                  auth.signOut();
+                }}
+              >
+                Log Out
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

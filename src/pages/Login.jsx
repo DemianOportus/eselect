@@ -1,26 +1,28 @@
 import BlackNavbar from "../components/blackNavbar.jsx";
 import { useState } from "react";
+import { useAuth } from "../AuthContext.js";
+import { async } from "@firebase/util";
 
 function Login() {
+  let auth = useAuth();
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  function login(email, password) {
-    console.log(email);
-    console.log(password);
-    fetch("/api/login/", {
-      method: "POST",
-      body: JSON.stringify({ email: email, password: password }),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((response) => response.json())
-      .then((loginUser) => console.log(loginUser));
+
+  async function login(email, password) {
+    console.log(">" + email);
+    console.log(">" + password);
+    await auth.login(email, password);
+    auth.getCurrentUser();
   }
+
   return (
     <div className="loginPage">
       <BlackNavbar />
       <div className="loginText">
         <p className="welcome">Welcome back!</p>
         <h1>Sign in to e-selection</h1>
+        {/**auth.user.email == !undefined && <h1>{auth.user.email}</h1>**/}
         <input
           className="loginInput"
           placeholder="Email"
@@ -37,7 +39,13 @@ function Login() {
             console.log(password);
           }}
         ></input>
-        <button className="loginButton" onClick={() => login(email, password)}>
+        <button
+          className="loginButton"
+          onClick={(e) => {
+            e.preventDefault();
+            login(email, password);
+          }}
+        >
           Login
         </button>
         <div style={{ paddingTop: "17px" }}>
