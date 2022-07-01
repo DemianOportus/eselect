@@ -18,30 +18,45 @@ function Signup() {
   const [errorMessage, setErrorMessage] = useState("");
   let alertRef = useRef();
 
-  async function createUser(email, password, confirmPassword) {
-    if (password === confirmPassword) {
-      setError(false);
-      await auth.signup(email, password);
-      if (auth.error === "") {
-        auth.getCurrentUser();
-      } else {
-        if (auth.error === "Firebase: Error (auth/missing-email).") {
-          setErrorMessage("No email address was provided");
-        } else if (auth.error === "Firebase: Error (auth/invalid-email).") {
-          setErrorMessage("This email address is invalid.");
-        } else if (
-          auth.error ===
-          "Firebase: Password should be at least 6 characters (auth/weak-password)."
-        ) {
-          setErrorMessage("Password must be at least 6 characters");
-        }
+  function signUpCheck(email, password, confirmPassword) {
+    let success = true;
+    if (email === "") {
+      setErrorMessage("Please enter an email address");
+      success = false;
+      return success;
+    }
+    if (password === "") {
+      setErrorMessage("Please enter a password");
+      success = false;
+      return success;
+    }
+    if (confirmPassword === "") {
+      setErrorMessage("Please confirm your password");
+      success = false;
+      return success;
+    }
+    if (password !== confirmPassword) {
+      setErrorMessage("Password dose not match.");
+      success = false;
+      return success;
+    }
+    if (password.length < 6) {
+      setErrorMessage("Password must be at list 6 character");
+      success = false;
+      return success;
+    }
+    return success;
+  }
 
+  async function createUser(email, password, confirmPassword) {
+    let result = signUpCheck(email, password, confirmPassword);
+    if (result === true) {
+      await auth.signup(email, password);
+      if (auth.error === "Firebase: Error (auth/invalid-email).") {
+        setErrorMessage("This email is invalid.");
         setError(true);
-        console.log(">" + auth.error);
       }
     } else {
-      setErrorMessage("Password dose not match.");
-
       setError(true);
     }
   }
