@@ -15,7 +15,7 @@ function Dashboard(props) {
       <h1>ID: {userInfo.uid}</h1>
     </>
   );
-  function runOnce() {
+  function getUser() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserInfo({ email: user.email, uid: user.uid });
@@ -23,13 +23,13 @@ function Dashboard(props) {
         console.log("it worked");
       } else {
         navigate("/login");
-        console.log("dont exist");
+        console.log("don't exist");
       }
     });
   }
 
   useEffect(() => {
-    runOnce();
+    getUser();
   }, []);
 
   return (
