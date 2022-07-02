@@ -46,7 +46,7 @@ function App() {
             <Route path="/houseCleaning" element={<HouseCleaning />} />
             <Route path="/loremIpsum" element={<LoremIpsum />} />
             <Route path="/landscaping" element={<Landscaping />} />
-            <Route path="/dashboard/:id" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </AuthProvider>
       </>

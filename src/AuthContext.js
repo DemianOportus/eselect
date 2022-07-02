@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { app, auth } from "./firebase";
 import { useState, useContext } from "react";
 import {
@@ -14,19 +14,20 @@ export function useAuth() {
 }
 
 export function AuthProvider(props) {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [error, setError] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  function getCurrentUser() {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log("email: " + user.email);
-        setUser(user);
-      } else {
-        console.log("No signed in user.");
-      }
-    });
-  }
+  // function getCurrentUser() {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       console.log("email: " + user.email);
+  //       setUser(user);
+  //     } else {
+  //       console.log("No signed in user.");
+  //     }
+  //   });
+  // }
 
   function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
@@ -34,6 +35,7 @@ export function AuthProvider(props) {
         setUser(userCredential.user);
       })
       .catch((e) => {
+        setUser({});
         console.log("SignUp Error: " + e.message);
         setError(e.message);
       });
@@ -57,13 +59,23 @@ export function AuthProvider(props) {
     });
   }
 
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log(user);
+      setUser(user);
+    } else {
+      console.log("no user");
+    }
+  });
+
   let value = {
     user: user,
     signup: signUp,
-    getCurrentUser: getCurrentUser,
     login: login,
     signOut: signOut,
     error: error,
+
+    loggedIn: loggedIn,
   };
   return (
     <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>

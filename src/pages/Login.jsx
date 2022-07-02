@@ -2,9 +2,13 @@ import BlackNavbar from "../components/blackNavbar.jsx";
 import { useState } from "react";
 import { useAuth } from "../AuthContext.js";
 import Alert from "@mui/material/Alert";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../firebase.js";
+import { onAuthStateChanged } from "firebase/auth";
 
 function Login() {
-  let auth = useAuth();
+  let userAuth = useAuth();
+  let navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,6 +18,7 @@ function Login() {
 
   function loginCheck(email, password) {
     let success = true;
+
     console.log(">>" + email);
     if (email === "") {
       setErrorMessage("Please enter an email address");
@@ -28,18 +33,30 @@ function Login() {
     return success;
   }
 
+  function loggedInUser() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("loggedIn");
+        navigate("/dashboard");
+      } else {
+        console.log("did not login");
+      }
+    });
+  }
+
   async function login(email, password) {
     let result = loginCheck(email, password);
     console.log(result);
     if (result === true) {
-      await auth.login(email, password);
-      auth.getCurrentUser();
-      if (auth.error === "Firebase: Error (auth/invalid-email).") {
+      await userAuth.login(email, password);
+      if (userAuth.error === "Firebase: Error (auth/invalid-email).") {
         setErrorMessage("This email is invalid.");
         setError(true);
-      } else if (auth.error === "Firebase: Error (auth/wrong-password).") {
+      } else if (userAuth.error === "Firebase: Error (auth/wrong-password).") {
         setErrorMessage("This password is incorrect.");
         setError(true);
+      } else {
+        loggedInUser();
       }
     } else {
       setError(true);

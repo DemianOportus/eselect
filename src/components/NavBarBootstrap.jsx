@@ -1,6 +1,8 @@
 import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
+import { useAuth } from "../AuthContext";
 
 function BootstrapNavbar() {
+  let auth = useAuth();
   return (
     <Navbar
       collapseOnSelect
@@ -26,9 +28,14 @@ function BootstrapNavbar() {
             <NavDropdown title="My account" id="collasible-nav-dropdown">
               <NavDropdown.Item href="./login">Login</NavDropdown.Item>
               <NavDropdown.Item href="./signup">Sign up</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item href="./dashboard">Dashboard</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Log out</NavDropdown.Item>
+              <NavDropdown.Item
+                href="#action/3.4"
+                onClick={() => auth.signOut()}
+              >
+                Log out
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
