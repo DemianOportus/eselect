@@ -17,36 +17,38 @@ import Landscaping from "./pages/landscaping.jsx";
 import HouseCleaning from "./pages/houseCleaning.jsx";
 import LoremIpsum from "./pages/loremIpsum.jsx";
 import { Grid } from "@mui/material";
-import { spacing } from "@mui/system";
-
+import { AuthProvider } from "./AuthContext.js";
+import { FormatPaint } from "@mui/icons-material";
 function App() {
   return (
     <Router>
       <>
-        {/* <ResponsiveAppBar/> */}
-        <Routes>
-          <Route
-            path="app/"
-            element={
-              <div>
-                <BootstrapNavbar />
-                <Homepage />
-                <Grid container sx={{ justifyContent: "center" }}>
-                  {cards.map(MultiActionAreaCard)}
-                </Grid>
-                <Footer />
-              </div>
-            }
-          />
-          <Route path="app/login" element={<Login />} />
-          <Route path="app/signup" element={<Signup />} />
-          <Route path="app/404" element={<Error404 />} />
-          <Route path="app/booking" element={<Booking />} />
-          <Route path="app/houseCleaning" element={<HouseCleaning />} />
-          <Route path="app/loremIpsum" element={<LoremIpsum />} />
-          <Route path="app/landscaping" element={<Landscaping />} />
-          <Route path="app/dashboard/:id" element={<Dashboard />} />
-        </Routes>
+        <AuthProvider value={"name"}>
+          {/* <ResponsiveAppBar/> */}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div>
+                  <BootstrapNavbar />
+                  <Homepage />
+                  <Grid container sx={{ justifyContent: "center" }}>
+                    {cards.map(MultiActionAreaCard)}
+                  </Grid>
+                  <Footer />
+                </div>
+              }
+            />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/404" element={<Error404 />} />
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/houseCleaning" element={<HouseCleaning />} />
+            <Route path="/loremIpsum" element={<LoremIpsum />} />
+            <Route path="/landscaping" element={<Landscaping />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </AuthProvider>
       </>
     </Router>
   );
