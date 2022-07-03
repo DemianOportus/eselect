@@ -35,7 +35,7 @@ function Dashboard(props) {
   return (
     <div>
       Dashboard
-      {loadState ? <h1>Loading</h1> : page}
+      {loadState ? <h1>Loading...</h1> : page}
     </div>
   );
 }
