@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Grid, Typography, Button } from "@mui/material";
 //import img1  from "../images/personal-selection.jpeg";
 import styled from "@emotion/styled";
-import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function Homepage() {
