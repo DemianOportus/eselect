@@ -64,7 +64,15 @@ function BootstrapNavbar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav>
-            <Nav.Link href="#Services" style={{ paddingRight: "5%" }}>
+            <Nav.Link
+              href="#services"
+              style={{
+                paddingRight: "5%",
+                // backgroundColor: "white",
+                // color: "black",
+                // fontWeight: "bolder",
+              }}
+            >
               Services
             </Nav.Link>
             <Nav.Link href="#pricing" style={{ paddingRight: "5%" }}>
