@@ -9,7 +9,6 @@ export default function MultiActionAreaCard(props) {
   return (
     <Card
       className="serviceCards"
-      id="servicesAre"
       sx={{ display: "inline-block", margin: "2%", width: "300px" }}
     >
       <CardActionArea href={props.path}>
