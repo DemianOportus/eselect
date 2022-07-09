@@ -32,7 +32,11 @@ function App() {
                 <div>
                   <BootstrapNavbar />
                   <Homepage />
-                  <Grid container sx={{ justifyContent: "center" }}>
+                  <Grid
+                    container
+                    sx={{ justifyContent: "center" }}
+                    id="services"
+                  >
                     {cards.map(MultiActionAreaCard)}
                   </Grid>
                   <Footer />
