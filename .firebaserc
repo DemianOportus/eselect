@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "eselection"
-  }
+    "default": "eselect-9074a",
+    "staging": "eselect-9074a"
+  },
+  "targets": {}
 }
