@@ -231,3 +231,34 @@ body h1 {
 .footer-icon:hover {
   transform: scale(1.5);
 }
+
+/* Contact page CSS  */
+#contactPage {
+  text-align: center;
+  padding-top: 10vh;
+}
+
+#sendButton {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 15px;
+  padding: 7px;
+  font-family: "Montserrat";
+  background-color: #1876d1;
+}
+.contactInput {
+  padding: 7px;
+  width: 100%;
+  font-family: "Montserrat";
+  border-radius: 15px;
+  border: 1px solid gray;
+}
+#questionBox {
+  width: 100%;
+  font-family: "Montserrat";
+  height: 100px;
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid gray;
+}
+/* END OFContact page CSS  */

@@ -1,10 +1,10 @@
-import BlackNavbar from "../components/blackNavbar.jsx";
 import { useState } from "react";
 import { useAuth } from "../AuthContext.js";
 import Alert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
+import BootstrapNavbar from "../components/NavBarBootstrap";
 
 function Login() {
   let userAuth = useAuth();
@@ -65,7 +65,7 @@ function Login() {
 
   return (
     <div className="loginPage">
-      <BlackNavbar />
+      <BootstrapNavbar />
       <div className="loginText">
         <p className="welcome">Welcome back!</p>
         <h1>Sign in to e-selection</h1>

@@ -59,13 +59,15 @@ function BootstrapNavbar() {
       style={{ backgroundColor: "#1876D1" }}
     >
       <Container className="customNavbar">
-        <Navbar.Brand style={{ margin: "0" }}>e-selection</Navbar.Brand>
+        <Navbar.Brand href="/" style={{ margin: "0" }}>
+          e-selection
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav>
             <Nav.Link
-              href="#services"
+              href="/#services"
               style={{
                 paddingRight: "5%",
                 // backgroundColor: "white",
@@ -75,11 +77,11 @@ function BootstrapNavbar() {
             >
               Services
             </Nav.Link>
-            <Nav.Link href="#pricing" style={{ paddingRight: "5%" }}>
+            <Nav.Link href="/contact" style={{ paddingRight: "5%" }}>
               Pricing
             </Nav.Link>
-            <Nav.Link href="#features" style={{ paddingRight: "5%" }}>
-              Features
+            <Nav.Link href="/contact" style={{ paddingRight: "5%" }}>
+              Contact
             </Nav.Link>
             <NavDropdown title="My account" id="collasible-nav-dropdown">
               {loadState ? <></> : nav}

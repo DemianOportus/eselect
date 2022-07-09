@@ -19,6 +19,7 @@ import LoremIpsum from "./pages/loremIpsum.jsx";
 import { Grid } from "@mui/material";
 import { AuthProvider } from "./AuthContext.js";
 import { FormatPaint } from "@mui/icons-material";
+import { Contact } from "./pages/contact.js";
 function App() {
   return (
     <Router>
@@ -51,6 +52,7 @@ function App() {
             <Route path="/loremIpsum" element={<LoremIpsum />} />
             <Route path="/landscaping" element={<Landscaping />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </AuthProvider>
       </>

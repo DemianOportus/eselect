@@ -1,4 +1,3 @@
-import BlackNavbar from "../components/blackNavbar.jsx";
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +5,7 @@ import { useAuth } from "../AuthContext.js";
 import { onAuthStateChanged, sendEmailVerification } from "firebase/auth";
 import Alert from "@mui/material/Alert";
 import { auth } from "../firebase.js";
+import BootstrapNavbar from "../components/NavBarBootstrap";
 
 function Signup() {
   let userAuth = useAuth();
@@ -79,7 +79,7 @@ function Signup() {
 
   return (
     <div className="loginPage">
-      <BlackNavbar />
+      <BootstrapNavbar />
       <div className="loginText">
         <p className="welcome">Join us today!</p>
         <h1>Sign up for free</h1>
