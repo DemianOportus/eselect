@@ -6,6 +6,7 @@ import { onAuthStateChanged, sendEmailVerification } from "firebase/auth";
 import Alert from "@mui/material/Alert";
 import { auth } from "../firebase.js";
 import BootstrapNavbar from "../components/NavBarBootstrap";
+import { Box } from "@mui/material";
 
 function Signup() {
   let userAuth = useAuth();
@@ -33,6 +34,12 @@ function Signup() {
 
   function signUpCheck(email, password, confirmPassword) {
     let success = true;
+
+    if (email === "" && password === "" && confirmPassword === "") {
+      setErrorMessage("Please fill-in the form.");
+      success = false;
+      return success;
+    }
     if (email === "") {
       setErrorMessage("Please enter an email address");
       success = false;
@@ -83,11 +90,6 @@ function Signup() {
       <div className="loginText">
         <p className="welcome">Join us today!</p>
         <h1>Sign up for free</h1>
-        {error && (
-          <Alert variant="filled" severity="error">
-            {errorMessage}
-          </Alert>
-        )}
 
         <input
           onChange={(event) => setEmail(event.target.value)}
@@ -111,6 +113,20 @@ function Signup() {
           placeholder="Confirm password"
         />
 
+        {error && (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              m: 1,
+            }}
+          >
+            <Alert sx={{ width: "250px" }} variant="filled" severity="error">
+              {errorMessage}
+            </Alert>
+          </Box>
+        )}
         <button
           className="loginButton"
           onClick={(e) => {

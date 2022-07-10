@@ -6,6 +6,7 @@ import { auth } from "../firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
 import BootstrapNavbar from "../components/NavBarBootstrap";
 import Footer from "../components/footer.jsx";
+import { Box } from "@mui/material";
 
 function Login() {
   let userAuth = useAuth();
@@ -21,6 +22,11 @@ function Login() {
     let success = true;
 
     console.log(">>" + email);
+    if (email === "" && password == "") {
+      setErrorMessage("Please please enter your email and password.");
+      success = false;
+      return success;
+    }
     if (email === "") {
       setErrorMessage("Please enter an email address");
       success = false;
@@ -70,11 +76,6 @@ function Login() {
       <div className="loginText">
         <p className="welcome">Welcome back!</p>
         <h1>Sign in to e-selection</h1>
-        {error && (
-          <Alert variant="filled" severity="error">
-            {errorMessage}
-          </Alert>
-        )}
         <input
           className="loginInput"
           placeholder="Email"
@@ -91,6 +92,21 @@ function Login() {
             console.log(password);
           }}
         ></input>
+
+        {error && (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              m: 1,
+            }}
+          >
+            <Alert sx={{ width: "250px" }} variant="filled" severity="error">
+              {errorMessage}
+            </Alert>
+          </Box>
+        )}
         <button
           className="loginButton"
           onClick={(e) => {
