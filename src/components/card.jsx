@@ -11,7 +11,7 @@ export default function MultiActionAreaCard(props) {
       className="serviceCards"
       sx={{ display: "inline-block", margin: "2%", width: "300px" }}
     >
-      <CardActionArea href={props.path}>
+      <CardActionArea href="/aboutService">
         <CardMedia
           component="img"
           height="200"
