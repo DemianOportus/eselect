@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
 import BootstrapNavbar from "../components/NavBarBootstrap";
+import Footer from "../components/footer.jsx";
 
 function Login() {
   let userAuth = useAuth();
@@ -105,6 +106,7 @@ function Login() {
           </a>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

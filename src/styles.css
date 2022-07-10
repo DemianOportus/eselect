@@ -262,3 +262,16 @@ body h1 {
   border: 1px solid gray;
 }
 /* END OFContact page CSS  */
+
+/* Dashboard CSS */
+.subtitle {
+  font-family: "Montserrat";
+  font-weight: 900;
+  font-size: 7vh;
+  color: black;
+  text-align: center;
+}
+
+.buttonHoverEffect:hover {
+  background-color: #1876d0 !important;
+}
