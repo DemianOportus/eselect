@@ -2,6 +2,7 @@ import { Button, Grid, AlertTitle, Alert, Container } from "@mui/material";
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import BootstrapNavbar from "../components/NavBarBootstrap";
+import Footer from "../components/footer";
 
 export const Contact = () => {
   const [name, setName] = useState("");
@@ -66,7 +67,7 @@ export const Contact = () => {
   return (
     <>
       <BootstrapNavbar />
-      <Container maxWidth="sm" id="contactPage">
+      <Container maxWidth="sm" id="contactPage" sx={{ mb: "20vh" }}>
         <h1>Request a service!</h1>
         <Alert severity="info" sx={{ width: "100%", textAlign: "left", mb: 3 }}>
           <AlertTitle>Info!</AlertTitle>
@@ -137,6 +138,7 @@ export const Contact = () => {
           </Grid>
         </form>
       </Container>
+      <Footer />
     </>
   );
 };

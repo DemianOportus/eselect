@@ -235,7 +235,7 @@ body h1 {
 /* Contact page CSS  */
 #contactPage {
   text-align: center;
-  padding-top: 10vh;
+  margin-top: 13vh;
 }
 
 #sendButton {
