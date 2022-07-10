@@ -108,9 +108,6 @@ body h1 {
   top: 70%;
   left: 5%;
 }
-#bookServiceButton:hover {
-  color: white !important;
-}
 
 @media (max-width: 600px) {
   #titleText {
