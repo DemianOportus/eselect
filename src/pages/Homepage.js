@@ -53,6 +53,21 @@ function Homepage() {
             >
               Find the service <br /> that you need <br /> at e-Selection
             </Typography>
+              <Button
+                id="bookServiceButton"
+                style={{ 
+                  position: "absolute", 
+                  zIndex: 1, 
+                  height: "7vh",
+                  textTransform: "none",
+                  fontFamily: "Montserrat",
+                  fontSize: "2.5vh",
+                  marginTop: "20px"
+                }}
+                href="#services"
+              >
+                Book a service
+              </Button>
           </Grid>
         </Box>
       </ThemeProvider>

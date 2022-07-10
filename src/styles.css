@@ -103,6 +103,11 @@ body h1 {
 }
 
 /* Homepage - Title & image */
+#bookServiceButton {
+  width: 23%;
+  top: 70%; 
+  left: 5%;
+}
 
 @media (max-width: 600px) {
   #titleText {
@@ -114,8 +119,20 @@ body h1 {
     background-color: 1876D1;
     color: white;
     margin-bottom: 5%;
-    height: 35%;
+    height:50%;
     font-weight: 500;
+  }
+
+  #bookServiceButton {
+    top: 83% !important;
+    background-color: black;
+    width: 40%;
+    left: 30%;
+  }
+
+  #bookServiceButton:hover {
+    background-color:white;
+    color: black;
   }
 
   #titleImage {
@@ -131,13 +148,14 @@ body h1 {
   #titleText {
     padding: 3% 0% 5% 0%;
     position: relative;
-    font-size: 8vw;
+    font-size: 7vh;
     left: 0;
-    background-color: 1876D1;
+    background-color: #1876D1;
     text-align: center;
     color: white;
     margin-bottom: 5%;
     font-weight: 500;
+    height: 45%;
   }
 
   #titleImage {
@@ -146,6 +164,18 @@ body h1 {
     object-fit: cover;
     object-position: 90%;
     margin-bottom: 0 !important;
+  }
+
+  #bookServiceButton {
+    top: 83% !important;
+    background-color: black;
+    width: 36%;
+    left: 32%;
+  }
+
+  #bookServiceButton:hover {
+    background-color:white;
+    color: black;
   }
 }
 

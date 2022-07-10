@@ -20,6 +20,7 @@ import { Grid } from "@mui/material";
 import { AuthProvider } from "./AuthContext.js";
 import { FormatPaint } from "@mui/icons-material";
 import { Contact } from "./pages/contact.js";
+import OurServicesSubtitle from "./components/ourServicesSubtitle.js";
 
 function App(props) {
   return (
@@ -34,6 +35,7 @@ function App(props) {
                 <div>
                   <BootstrapNavbar />
                   <Homepage />
+                  <OurServicesSubtitle/>
                   <Grid
                     container
                     sx={{ justifyContent: "center" }}

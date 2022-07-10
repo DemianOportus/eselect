@@ -5,7 +5,7 @@ function Footer(){
     let thisYear = date.getFullYear();
 
 return(
-<footer id="footer">
+<footer id="footer" style={{marginTop: "80px"}}>
     <div>
     <i className="footer-icon fa-brands fa-twitter"></i>
     <i className="footer-icon fa-brands fa-facebook-f"></i>

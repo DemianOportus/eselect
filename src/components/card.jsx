@@ -19,11 +19,8 @@ export default function MultiActionAreaCard(props) {
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" component="div" style={{fontFamily: "Montserrat", fontWeight: "500"}}>
             {props.service}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lorem Ipsum
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -32,7 +29,7 @@ export default function MultiActionAreaCard(props) {
           href="/booking"
           size="small"
           color="primary"
-          sx={{ textTransform: "none", paddingLeft: "3%" }}
+          sx={{ textTransform: "none", paddingTop: 0, paddingLeft: "3%", fontFamily: "Montserrat"}}
         >
           Book now
         </Button>
