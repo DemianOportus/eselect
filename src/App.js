@@ -13,14 +13,15 @@ import cards from "./components/cardInfo.js";
 import Signup from "./pages/Signup.jsx";
 import Error404 from "./pages/error404.jsx";
 import Booking from "./pages/booking.jsx";
-import Landscaping from "./pages/landscaping.jsx";
-import HouseCleaning from "./pages/houseCleaning.jsx";
-import LoremIpsum from "./pages/loremIpsum.jsx";
+// import Landscaping from "./pages/landscaping.jsx";
+// import HouseCleaning from "./pages/houseCleaning.jsx";
+import AboutService from "./pages/aboutService.js";
 import { Grid } from "@mui/material";
 import { AuthProvider } from "./AuthContext.js";
 import { FormatPaint } from "@mui/icons-material";
 import { Contact } from "./pages/contact.js";
-function App() {
+
+function App(props) {
   return (
     <Router>
       <>
@@ -48,9 +49,10 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/404" element={<Error404 />} />
             <Route path="/booking" element={<Booking />} />
-            <Route path="/houseCleaning" element={<HouseCleaning />} />
+            <Route path="/aboutService" element={cards.map(AboutService)} />
+            {/* <Route path="/houseCleaning" element={<HouseCleaning />} />
             <Route path="/loremIpsum" element={<LoremIpsum />} />
-            <Route path="/landscaping" element={<Landscaping />} />
+            <Route path="/landscaping" element={<Landscaping />} /> */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
