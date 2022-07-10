@@ -11,7 +11,7 @@ export default function MultiActionAreaCard(props) {
       className="serviceCards"
       sx={{ display: "inline-block", margin: "2%", width: "300px" }}
     >
-      <CardActionArea href="/aboutService">
+      <CardActionArea href="/booking">
         <CardMedia
           component="img"
           height="200"
@@ -19,7 +19,12 @@ export default function MultiActionAreaCard(props) {
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h6" component="div" style={{fontFamily: "Montserrat", fontWeight: "500"}}>
+          <Typography
+            gutterBottom
+            variant="h6"
+            component="div"
+            style={{ fontFamily: "Montserrat", fontWeight: "500" }}
+          >
             {props.service}
           </Typography>
         </CardContent>
@@ -29,7 +34,12 @@ export default function MultiActionAreaCard(props) {
           href="/booking"
           size="small"
           color="primary"
-          sx={{ textTransform: "none", paddingTop: 0, paddingLeft: "3%", fontFamily: "Montserrat"}}
+          sx={{
+            textTransform: "none",
+            paddingTop: 0,
+            paddingLeft: "3%",
+            fontFamily: "Montserrat",
+          }}
         >
           Book now
         </Button>
