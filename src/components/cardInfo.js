@@ -2,6 +2,8 @@ const cards = [
   {
     id: 1,
     service: "Landscaping",
+    description: "Need your lawn mowed or you hedges trimmed? E-selection's team of professional landscapers will have your yard looking ready for the summer!",
+    company: "Our landscaping services are performed by X, a small business located in Y.",
     path: "/landscaping",
     imgURL:
       "https://images.unsplash.com/photo-1458245201577-fc8a130b8829?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80",

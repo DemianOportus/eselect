@@ -105,33 +105,37 @@ body h1 {
 /* Homepage - Title & image */
 #bookServiceButton {
   width: 23%;
-  top: 70%;
+  top: 70%; 
   left: 5%;
+}
+
+#bookServiceButton:hover {
+  color: white;
 }
 
 @media (max-width: 600px) {
   #titleText {
     padding-top: 32px;
     position: relative;
-    font-size: 50px;
+    font-size: 5vh;
     text-align: center;
     left: 0;
     background-color: 1876D1;
     color: white;
     margin-bottom: 5%;
-    height: 50%;
+    height:40%;
     font-weight: 500;
   }
 
   #bookServiceButton {
     top: 83% !important;
     background-color: black;
-    width: 40%;
-    left: 30%;
+    width: 60%;
+    left: 20%;
   }
 
   #bookServiceButton:hover {
-    background-color: white;
+    background-color:white;
     color: black;
   }
 
@@ -150,7 +154,7 @@ body h1 {
     position: relative;
     font-size: 7vh;
     left: 0;
-    background-color: #1876d1;
+    background-color: #1876D1;
     text-align: center;
     color: white;
     margin-bottom: 5%;
@@ -174,7 +178,7 @@ body h1 {
   }
 
   #bookServiceButton:hover {
-    background-color: white;
+    background-color:white;
     color: black;
   }
 }
@@ -184,6 +188,11 @@ body h1 {
   .serviceCards {
     width: 220px !important;
   }
+
+  #bookServiceButton {
+    width: 38%;
+  }
+
 }
 
 /* Homepage - Footer */
@@ -268,7 +277,7 @@ body h1 {
   margin-top: 13vh;
 }
 
-.sendButton {
+#sendButton {
   margin-top: 10px;
   width: 100%;
   border-radius: 15px;
@@ -304,9 +313,4 @@ body h1 {
 
 .buttonHoverEffect:hover {
   background-color: #1876d0 !important;
-}
-
-/* /booking page button fix href ugly color */
-#nohrefHover:hover {
-  color: white !important;
 }
