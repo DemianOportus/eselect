@@ -31,7 +31,7 @@ function Homepage() {
       <ThemeProvider theme={theme}>
         <Box>
           <Grid sx={{ position: "relative" }}>
-            {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+            
             <img
               id="titleImage"
               style={{
