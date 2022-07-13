@@ -126,7 +126,7 @@ export const Contact = () => {
                 </Alert>
               )}
               <Button
-                id="sendButton"
+                className="sendButton"
                 variant="contained"
                 type="submit"
                 value="Send"

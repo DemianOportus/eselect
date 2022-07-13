@@ -22,7 +22,7 @@ function Login() {
     let success = true;
 
     console.log(">>" + email);
-    if (email === "" && password == "") {
+    if (email === "" && password === "") {
       setErrorMessage("Please please enter your email and password.");
       success = false;
       return success;

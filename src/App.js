@@ -1,7 +1,7 @@
 import * as React from "react";
 import Homepage from "./pages/Homepage.js";
 import Dashboard from "./pages/Dashboard.js";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useParams } from "react-router-dom";
 // import ResponsiveAppBar from "./components/NavBar";
 import "../src/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,6 +23,8 @@ import { Contact } from "./pages/contact.js";
 import OurServicesSubtitle from "./components/ourServicesSubtitle.js";
 
 function App(props) {
+  let { serviceId } = useParams();
+
   return (
     <Router>
       <>
@@ -51,10 +53,14 @@ function App(props) {
             <Route path="/signup" element={<Signup />} />
             <Route path="/404" element={<Error404 />} />
             <Route path="/booking" element={<Booking />} />
-            <Route path="/aboutService" element={cards.map(AboutService)} />
-            {/* <Route path="/houseCleaning" element={<HouseCleaning />} />
-            <Route path="/loremIpsum" element={<LoremIpsum />} />
-            <Route path="/landscaping" element={<Landscaping />} /> */}
+            <Route 
+              path="/aboutService" 
+              element=
+                {<div>
+                  <BootstrapNavbar/>
+                  {cards.map(AboutService)} 
+                </div>}
+              />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

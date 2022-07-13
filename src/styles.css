@@ -109,25 +109,29 @@ body h1 {
   left: 5%;
 }
 
+#bookServiceButton:hover {
+  color: white;
+}
+
 @media (max-width: 600px) {
   #titleText {
     padding-top: 32px;
     position: relative;
-    font-size: 50px;
+    font-size: 5vh;
     text-align: center;
     left: 0;
     background-color: 1876D1;
     color: white;
     margin-bottom: 5%;
-    height:50%;
+    height:40%;
     font-weight: 500;
   }
 
   #bookServiceButton {
     top: 83% !important;
     background-color: black;
-    width: 40%;
-    left: 30%;
+    width: 60%;
+    left: 20%;
   }
 
   #bookServiceButton:hover {
@@ -184,6 +188,11 @@ body h1 {
   .serviceCards {
     width: 220px !important;
   }
+
+  #bookServiceButton {
+    width: 38%;
+  }
+
 }
 
 /* Homepage - Footer */
