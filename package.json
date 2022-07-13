@@ -5,6 +5,7 @@
   "private": false,
   "type": "module",
   "dependencies": {
+    "@craco/craco": "^7.0.0-alpha.7",
     "@emailjs/browser": "^3.6.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -25,15 +26,15 @@
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "^4.0.3",
     "stream": "^0.0.2",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "browserslist": {
