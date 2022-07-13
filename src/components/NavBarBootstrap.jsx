@@ -56,7 +56,7 @@ function BootstrapNavbar() {
       collapseOnSelect
       expand="lg"
       variant="dark"
-      style={{ backgroundColor: "#1876d0" }}
+      style={{ backgroundColor: "#000" }}
     >
       <Container className="customNavbar">
         <Navbar.Brand href="/" style={{ margin: "0" }}>

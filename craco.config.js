@@ -1,12 +1,3 @@
-// import {
-//   when,
-//   whenDev,
-//   whenProd,
-//   whenTest,
-//   ESLINT_MODES,
-//   POSTCSS_MODES,
-// } from "@craco/craco";
-
 const {
   when,
   whenDev,
