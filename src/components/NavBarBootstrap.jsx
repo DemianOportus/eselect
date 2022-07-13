@@ -3,7 +3,7 @@ import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
 import { useAuth } from "../AuthContext";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-// 1876D1
+
 function BootstrapNavbar() {
   let authContext = useAuth();
   const [userState, setUserState] = useState(false);
@@ -56,7 +56,7 @@ function BootstrapNavbar() {
       collapseOnSelect
       expand="lg"
       variant="dark"
-      style={{ backgroundColor: "#000" }}
+      style={{ backgroundColor: "#1876D1" }}
     >
       <Container className="customNavbar">
         <Navbar.Brand href="/" style={{ margin: "0" }}>
