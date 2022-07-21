@@ -9,6 +9,7 @@ import { StaticDateTimePicker } from "@mui/x-date-pickers/StaticDateTimePicker";
 import { Box } from "@mui/material";
 
 function Timer() {
+  ``;
   const [value, setValue] = React.useState(new Date());
   return (
     <Box sx={{ width: "100px", hight: "100px", outline: "solid 2px #000" }}>

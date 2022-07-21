@@ -21,8 +21,6 @@ function Booking() {
           <Typography variant="h2">Book an appointment</Typography>
         </Grid>
         <Grid item xs={12} justifyContent="center" textAlign="center">
-          <Calendar></Calendar>
-          <Timer></Timer>
           <Button
             id="nohrefHover"
             variant="contained"
