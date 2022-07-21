@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import BootstrapNavbar from "../components/NavBarBootstrap";
 import Footer from "../components/footer";
+import Calendar from "../components/Calendar";
+import Timer from "../components/Time";
 
 function Booking() {
   return (
@@ -19,11 +21,6 @@ function Booking() {
           <Typography variant="h2">Book an appointment</Typography>
         </Grid>
         <Grid item xs={12} justifyContent="center" textAlign="center">
-          <Alert severity="warning" sx={{ textAlign: "left", mb: 2 }}>
-            <AlertTitle>Warning</AlertTitle>
-            This service is not yet available.{" "}
-            <strong>Send us your request by email</strong>
-          </Alert>
           <Button
             id="nohrefHover"
             variant="contained"

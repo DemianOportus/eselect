@@ -63,7 +63,7 @@ function Homepage() {
                 fontSize: "2.5vh",
                 marginTop: "20px",
               }}
-              href="#services"
+              href="https://squareupsandbox.com/appointments/book/k6mcg8wobqbnc9/LZN2MK7DNPVPN/start"
             >
               Book a service
             </Button>
