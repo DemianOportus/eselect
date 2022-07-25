@@ -77,7 +77,10 @@ function BootstrapNavbar() {
             >
               Services
             </Nav.Link>
-            <Nav.Link href="/contact" style={{ paddingRight: "5%" }}>
+            <Nav.Link
+              href="https://squareup.com/appointments/book/3mxfn22nd0pclk/LATYFHKVG6P0T/start"
+              style={{ paddingRight: "5%" }}
+            >
               Pricing
             </Nav.Link>
             <Nav.Link href="/contact" style={{ paddingRight: "5%" }}>
