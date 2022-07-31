@@ -64,7 +64,9 @@ function Homepage() {
                 marginTop: "20px",
               }}
               href="https://squareup.com/appointments/book/3mxfn22nd0pclk/LATYFHKVG6P0T/start"
-            ></Button>
+            >
+              Book a service
+            </Button>
           </Grid>
         </Box>
       </ThemeProvider>

@@ -11,7 +11,7 @@ export default function MultiActionAreaCard(props) {
       className="serviceCards"
       sx={{ display: "inline-block", margin: "2%", width: "300px" }}
     >
-      <CardActionArea href="/booking">
+      <CardActionArea href="https://squareup.com/appointments/book/3mxfn22nd0pclk/LATYFHKVG6P0T/start">
         <CardMedia
           component="img"
           height="200"
@@ -31,7 +31,7 @@ export default function MultiActionAreaCard(props) {
       </CardActionArea>
       <CardActions>
         <Button
-          href="/booking"
+          href="https://squareup.com/appointments/book/3mxfn22nd0pclk/LATYFHKVG6P0T/start"
           size="small"
           color="primary"
           sx={{
