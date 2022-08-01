@@ -1,7 +1,9 @@
 import React from "react";
 import { Grid, Typography, Button, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function DashOption(props) {
+  let navigate = useNavigate();
   return (
     <Grid
       container
@@ -26,6 +28,7 @@ function DashOption(props) {
           }}
         />
       </Grid>
+
       <Grid item sm={6} lg={6}>
         <Typography
           id="settingsTitle"
@@ -43,7 +46,11 @@ function DashOption(props) {
         <Box textAlign="center">
           <Button
             className="buttonHoverEffect"
-            href={props.action}
+            onClick={() => {
+              console.log("clicked");
+              let link = "../" + props.action;
+              navigate(link);
+            }}
             id="contactButton"
             size="large"
             variant="contained"

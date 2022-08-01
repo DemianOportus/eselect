@@ -14,7 +14,7 @@ const DashOptions = [
     id: 2,
     img: Settings,
     title: "Settings",
-    action: "/dashboard",
+    action: "/settings",
   },
   {
     id: 3,
