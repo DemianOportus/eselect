@@ -19,7 +19,7 @@ exports.checkout = functions.https.onCall(async (data, context) => {
     mode: "payment",
     success_url:
       "https://squareup.com/appointments/book/3mxfn22nd0pclk/LATYFHKVG6P0T/start",
-    cancel_url: "http://localhost:3000/",
+    cancel_url: "https://eselection.net/",
   });
   console.log(`link: ${session.url}`);
   console.log("end");
