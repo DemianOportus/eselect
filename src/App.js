@@ -18,6 +18,7 @@ import cards from "./components/cardInfo.js";
 import Signup from "./pages/Signup.jsx";
 import Error404 from "./pages/error404.jsx";
 import Booking from "./pages/booking.jsx";
+import Settings from "./pages/Settings.js";
 // import Landscaping from "./pages/landscaping.jsx";
 // import HouseCleaning from "./pages/houseCleaning.jsx";
 import AboutService from "./pages/aboutService.js";
@@ -29,9 +30,12 @@ import OurServicesSubtitle from "./components/ourServicesSubtitle.js";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
-function App(props) {
-  let { serviceId } = useParams();
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe(
+  "pk_test_51LUaNSLJrqrrGncPYgqczy0nyR2DvF15NwMyiTTJfudhiUOrKO3gGeg0Wgyl0d85lLQoVRiWwZh1PyiAa7yGxbwa00Beo4PFIV"
+);
 
+function App(props) {
   return (
     <Router>
       <>
@@ -61,6 +65,7 @@ function App(props) {
               <Route path="/signup" element={<Signup />} />
               <Route path="/404" element={<Error404 />} />
               <Route path="/booking" element={<Booking />} />
+              <Route path="/settings" element={<Settings />} />
               <Route
                 path="/aboutService"
                 element={
