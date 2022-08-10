@@ -30,9 +30,12 @@ import OurServicesSubtitle from "./components/ourServicesSubtitle.js";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
-function App(props) {
-  let { serviceId } = useParams();
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe(
+  "pk_test_51LUaNSLJrqrrGncPYgqczy0nyR2DvF15NwMyiTTJfudhiUOrKO3gGeg0Wgyl0d85lLQoVRiWwZh1PyiAa7yGxbwa00Beo4PFIV"
+);
 
+function App(props) {
   return (
     <Router>
       <>

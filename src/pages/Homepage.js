@@ -3,8 +3,15 @@ import { Box, Grid, Typography, Button } from "@mui/material";
 //import img1  from "../images/personal-selection.jpeg";
 import styled from "@emotion/styled";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+import {
+  connectFunctionsEmulator,
+  getFunctions,
+  httpsCallable,
+} from "firebase/functions";
 
 function Homepage() {
+  const navigate = useNavigate();
   const theme = createTheme({
     components: {
       // Name of the component
@@ -26,6 +33,15 @@ function Homepage() {
     md: 4,
     xs: 6,
   };
+
+  function handleClick() {
+    const functions = getFunctions();
+    const checkout = httpsCallable(functions, "checkout");
+    checkout().then((result) => {
+      console.log(result.data);
+      window.location.href = result.data;
+    });
+  }
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -63,7 +79,10 @@ function Homepage() {
                 fontSize: "2.5vh",
                 marginTop: "20px",
               }}
-              href="https://squareup.com/appointments/book/3mxfn22nd0pclk/LATYFHKVG6P0T/start"
+              onClick={(e) => {
+                e.preventDefault();
+                handleClick();
+              }}
             >
               Book a service
             </Button>
