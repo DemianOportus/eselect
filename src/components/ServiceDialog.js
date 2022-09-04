@@ -24,6 +24,7 @@ function ServiceDialog(props) {
       service={service["name"]}
       description={service["description"]}
       price={service["price"]}
+      image={service["Image"]}
     />
   ));
 
