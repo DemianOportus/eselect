@@ -1,4 +1,5 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { useState } from "react";
 
@@ -17,7 +18,7 @@ function ServiceItem(props) {
   }
   return (
     <>
-      <Button loading={loading} variant="text" onClick={handleClick}>
+      <LoadingButton loading={loading} variant="outlined" onClick={handleClick}>
         <Box
           sx={{
             display: "flex",
@@ -69,7 +70,7 @@ function ServiceItem(props) {
             <Typography variant="h4">{"CA$" + props.price}</Typography>
           </Box>
         </Box>
-      </Button>
+      </LoadingButton>
     </>
   );
 }
