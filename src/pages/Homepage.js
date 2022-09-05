@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Grid, Typography, Button } from "@mui/material";
-//import img1  from "../images/personal-selection.jpeg";
 import styled from "@emotion/styled";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import {
-  connectFunctionsEmulator,
-  getFunctions,
-  httpsCallable,
-} from "firebase/functions";
+
+import ServiceDialog from "../components/ServiceDialog";
 
 function Homepage() {
   const navigate = useNavigate();
+  const [modal, setModal] = useState(false);
+
+  function handleDialogClose() {
+    setModal(false);
+  }
+  function handleDialogOpen() {
+    setModal(true);
+  }
+
+  const [loading, setLoading] = useState(true);
+
   const theme = createTheme({
     components: {
       // Name of the component
@@ -23,6 +30,7 @@ function Homepage() {
       },
     },
   });
+
   const Item = styled(Grid)({
     justifyContent: "center",
     alignItems: "center",
@@ -34,15 +42,13 @@ function Homepage() {
     xs: 6,
   };
 
-  function handleClick() {
-    const functions = getFunctions();
-    const checkout = httpsCallable(functions, "checkout");
-    checkout().then((result) => {
-      console.log(result.data);
-      window.location.href = result.data;
-    });
-  }
-  return (
+  useEffect(() => {
+    console.log("loaded before page load.");
+    setLoading(false);
+    console.log("end");
+  }, []);
+
+  let page = (
     <>
       <ThemeProvider theme={theme}>
         <Box>
@@ -81,15 +87,17 @@ function Homepage() {
               }}
               onClick={(e) => {
                 e.preventDefault();
-                handleClick();
+                handleDialogOpen();
               }}
             >
               Book a service
             </Button>
+            <ServiceDialog open={modal} close={handleDialogClose} />
           </Grid>
         </Box>
       </ThemeProvider>
     </>
   );
+  return <>{loading ? <h1>Loading...</h1> : page}</>;
 }
 export default Homepage;
