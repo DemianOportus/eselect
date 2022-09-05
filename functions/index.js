@@ -37,6 +37,7 @@ exports.checkout = functions.https.onCall(async (data, context) => {
 
   console.log("data: ", serviceInfo);
   let price = serviceInfo.price * 100;
+  price = Number(price.toFixed());
   console.log("price>>", price);
   const stripe = require("stripe")(
     "sk_test_51LUaNSLJrqrrGncPioqPMrSTFRVNem0JJPJDfIDUHSaYBWEDlAOtuzBpkIw1Q6ictF5cwApTd5kbuOUEk8PA7G0200b4L5al9k"
