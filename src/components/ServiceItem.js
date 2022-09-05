@@ -1,9 +1,23 @@
 import { Box, Typography, Button } from "@mui/material";
+import { getFunctions, httpsCallable } from "firebase/functions";
+import { useState } from "react";
 
 function ServiceItem(props) {
+  const [loading, setLoading] = useState(false);
+
+  function handleClick() {
+    setLoading(true);
+    const functions = getFunctions();
+    const checkout = httpsCallable(functions, "checkout");
+    console.log(props.name);
+    checkout({ name: props.name }).then((result) => {
+      console.log(result.data);
+      window.location.href = result.data;
+    });
+  }
   return (
     <>
-      <Button variant="text">
+      <Button loading={loading} variant="text" onClick={handleClick}>
         <Box
           sx={{
             display: "flex",
@@ -29,7 +43,7 @@ function ServiceItem(props) {
             <Box
               sx={{ width: "100%", display: "flex", justifyContent: "start" }}
             >
-              <Typography variant="h5">{props.service}</Typography>
+              <Typography variant="h5">{props.name}</Typography>
             </Box>
 
             <Box

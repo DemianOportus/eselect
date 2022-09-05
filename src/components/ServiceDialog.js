@@ -21,10 +21,10 @@ function ServiceDialog(props) {
 
   let serviceDom = services.map((service) => (
     <ServiceItem
-      service={service["name"]}
+      name={service["name"]}
       description={service["description"]}
       price={service["price"]}
-      image={service["Image"]}
+      image={service["image"]}
     />
   ));
 

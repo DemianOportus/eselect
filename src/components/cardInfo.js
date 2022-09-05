@@ -20,7 +20,6 @@ const cards = [
   {
     id: 4,
     service: "Plumbing",
-
     imgURL:
       "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGx1bWJpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=1296&q=60",
   },

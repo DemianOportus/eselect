@@ -3,7 +3,6 @@ import { Box, Grid, Typography, Button } from "@mui/material";
 import styled from "@emotion/styled";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import { getFunctions, httpsCallable } from "firebase/functions";
 
 import ServiceDialog from "../components/ServiceDialog";
 
@@ -42,15 +41,6 @@ function Homepage() {
     md: 4,
     xs: 6,
   };
-
-  function handleClick() {
-    const functions = getFunctions();
-    const checkout = httpsCallable(functions, "checkout");
-    checkout().then((result) => {
-      console.log(result.data);
-      window.location.href = result.data;
-    });
-  }
 
   useEffect(() => {
     console.log("loaded before page load.");
