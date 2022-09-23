@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
 import ServiceDialog from "../components/ServiceDialog";
+import { RedirectProvider } from "../components/RedirectContext";
 
 function Homepage() {
   const navigate = useNavigate();
@@ -92,7 +93,9 @@ function Homepage() {
             >
               Book a service
             </Button>
-            <ServiceDialog open={modal} close={handleDialogClose} />
+            <RedirectProvider>
+              <ServiceDialog open={modal} close={handleDialogClose} />
+            </RedirectProvider>
           </Grid>
         </Box>
       </ThemeProvider>
