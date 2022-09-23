@@ -1,12 +1,29 @@
 import { useState, useEffect } from "react";
-import { Dialog, DialogTitle, Box, Stack, DialogContent } from "@mui/material";
+import {
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  Stack,
+  DialogContent,
+  Button,
+} from "@mui/material";
 import ServiceItem from "./ServiceItem";
 import { getDocs, collection } from "firebase/firestore";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { db } from "../firebase";
+import { useTheme } from "@mui/material/styles";
+import Calendar from "./Calendar";
+import { useRedirect } from "./RedirectContext";
+import { getFunctions, httpsCallable } from "firebase/functions";
 
 function ServiceDialog(props) {
+  const theme = useTheme();
+  const [header, setHeader] = useState("Service");
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [body, setBody] = useState(false);
+  let calendar = <Calendar />;
 
   async function getServices() {
     let servicesRef = collection(db, "Service");
@@ -16,11 +33,12 @@ function ServiceDialog(props) {
       data.push(doc.data());
     });
     setServices(data);
-    console.log(services);
   }
 
   let serviceDom = services.map((service) => (
     <ServiceItem
+      change={setHeader}
+      body={setBody}
       name={service["name"]}
       description={service["description"]}
       price={service["price"]}
@@ -28,25 +46,50 @@ function ServiceDialog(props) {
     />
   ));
 
+  let value = useRedirect();
+
   useEffect(() => {
-    console.log("loaded before page load.");
+    if (value.red) {
+      const functions = getFunctions();
+      const checkout = httpsCallable(functions, "checkout");
+      checkout({ name: value.name }).then((result) => {
+        window.location.href = result.data;
+      });
+    }
+  }, [value.red, value.name]);
+
+  useEffect(() => {
     getServices();
-    console.log("end");
     setLoading(false);
   }, []);
   let dialogDom = (
     <Dialog
       fullWidth={true}
-      maxWidth={"lg"}
+      maxWidth={"sm"}
       onClose={props.close}
       open={props.open}
+      fullScreen={fullScreen}
     >
-      <DialogTitle>Service</DialogTitle>
+      <DialogTitle>{header}</DialogTitle>
       <DialogContent>
         <Stack spacing={2} alignItems={"stretch"}>
-          {serviceDom}
+          {body ? <>{calendar}</> : serviceDom}
         </Stack>
       </DialogContent>
+
+      <DialogActions>
+        {body ? (
+          <Button
+            onClick={() => {
+              value.runUse(true);
+            }}
+          >
+            Proceed to checkout
+          </Button>
+        ) : (
+          <></>
+        )}
+      </DialogActions>
     </Dialog>
   );
   return <>{loading ? <h1>Loading</h1> : dialogDom}</>;

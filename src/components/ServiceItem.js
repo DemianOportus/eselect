@@ -1,21 +1,26 @@
 import { Box, Typography } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { getFunctions, httpsCallable } from "firebase/functions";
 import { useState } from "react";
+import {
+  createTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@mui/material/styles";
+import { useRedirect } from "./RedirectContext";
 
 function ServiceItem(props) {
+  let theme = createTheme();
+  theme = responsiveFontSizes(theme);
+  let value = useRedirect();
   const [loading, setLoading] = useState(false);
 
   function handleClick() {
+    props.change("Choose Appointment date");
+    props.body(true);
     setLoading(true);
-    const functions = getFunctions();
-    const checkout = httpsCallable(functions, "checkout");
-    console.log(props.name);
-    checkout({ name: props.name }).then((result) => {
-      console.log(result.data);
-      window.location.href = result.data;
-    });
+    value.runName(props.name);
   }
+
   return (
     <>
       <LoadingButton loading={loading} variant="outlined" onClick={handleClick}>
@@ -44,7 +49,9 @@ function ServiceItem(props) {
             <Box
               sx={{ width: "100%", display: "flex", justifyContent: "start" }}
             >
-              <Typography variant="h5">{props.name}</Typography>
+              <ThemeProvider theme={theme}>
+                <Typography variant="h5">{props.name}</Typography>
+              </ThemeProvider>
             </Box>
 
             <Box
@@ -56,7 +63,9 @@ function ServiceItem(props) {
                 textTransform: "capitalize",
               }}
             >
-              <Typography variant="subtitle1">{props.description}</Typography>
+              <ThemeProvider theme={theme}>
+                <Typography variant="subtitle2">{props.description}</Typography>
+              </ThemeProvider>
             </Box>
           </Box>
           <Box
@@ -67,7 +76,9 @@ function ServiceItem(props) {
               alignItems: "center",
             }}
           >
-            <Typography variant="h4">{"CA$" + props.price}</Typography>
+            <ThemeProvider theme={theme}>
+              <Typography variant={"h5"}>{"CA$" + props.price}</Typography>
+            </ThemeProvider>
           </Box>
         </Box>
       </LoadingButton>
