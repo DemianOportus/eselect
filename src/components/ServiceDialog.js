@@ -15,6 +15,7 @@ import { useTheme } from "@mui/material/styles";
 import Calendar from "./Calendar";
 import { useRedirect } from "./RedirectContext";
 import { getFunctions, httpsCallable } from "firebase/functions";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 function ServiceDialog(props) {
   const theme = useTheme();
@@ -22,6 +23,7 @@ function ServiceDialog(props) {
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [butLoad, setButLoad] = useState(false);
   const [body, setBody] = useState(false);
   let calendar = <Calendar />;
 
@@ -79,13 +81,16 @@ function ServiceDialog(props) {
 
       <DialogActions>
         {body ? (
-          <Button
+          <LoadingButton
+            loading={butLoad}
+            variant="contained"
             onClick={() => {
               value.runUse(true);
+              setButLoad(true);
             }}
           >
             Proceed to checkout
-          </Button>
+          </LoadingButton>
         ) : (
           <></>
         )}
