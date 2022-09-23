@@ -3,7 +3,6 @@ import {
   Dialog,
   DialogTitle,
   DialogActions,
-  Box,
   Stack,
   DialogContent,
   Button,
@@ -14,7 +13,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { db } from "../firebase";
 import { useTheme } from "@mui/material/styles";
 import Calendar from "./Calendar";
-import { RedirectProvider, useRedirect } from "./RedirectContext";
+import { useRedirect } from "./RedirectContext";
 import { getFunctions, httpsCallable } from "firebase/functions";
 
 function ServiceDialog(props) {
@@ -24,8 +23,7 @@ function ServiceDialog(props) {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [body, setBody] = useState(false);
-  const [isRedirected, setIsRedirected] = useState(false);
-  let cal = <Calendar />;
+  let calendar = <Calendar />;
 
   async function getServices() {
     let servicesRef = collection(db, "Service");
@@ -35,43 +33,33 @@ function ServiceDialog(props) {
       data.push(doc.data());
     });
     setServices(data);
-    console.log(services);
   }
 
   let serviceDom = services.map((service) => (
     <ServiceItem
       change={setHeader}
       body={setBody}
-      redirect={isRedirected}
       name={service["name"]}
       description={service["description"]}
       price={service["price"]}
       image={service["image"]}
     />
   ));
-  // ()  {
-  //   setIsRedirected(true);
-  //   console.log(isRedirected);
-  // }
+
   let value = useRedirect();
-  console.log(value);
+
   useEffect(() => {
-    console.log(value.red);
     if (value.red) {
       const functions = getFunctions();
       const checkout = httpsCallable(functions, "checkout");
-      console.log("name>>>", value.name);
       checkout({ name: value.name }).then((result) => {
-        console.log(result.data);
         window.location.href = result.data;
       });
     }
   }, [value.red, value.name]);
 
   useEffect(() => {
-    console.log("loaded before page load.");
     getServices();
-    console.log("end");
     setLoading(false);
   }, []);
   let dialogDom = (
@@ -82,10 +70,10 @@ function ServiceDialog(props) {
       open={props.open}
       fullScreen={fullScreen}
     >
-      <DialogTitle></DialogTitle>
+      <DialogTitle>{header}</DialogTitle>
       <DialogContent>
         <Stack spacing={2} alignItems={"stretch"}>
-          {body ? <h1>{cal}</h1> : serviceDom}
+          {body ? <>{calendar}</> : serviceDom}
         </Stack>
       </DialogContent>
 
@@ -96,7 +84,7 @@ function ServiceDialog(props) {
               value.runUse(true);
             }}
           >
-            Agree
+            Proceed to checkout
           </Button>
         ) : (
           <></>
