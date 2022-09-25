@@ -51,6 +51,7 @@ function ServiceDialog(props) {
   let value = useRedirect();
 
   useEffect(() => {
+    console.log(value.red);
     if (value.red) {
       const functions = getFunctions();
       const checkout = httpsCallable(functions, "checkout");
