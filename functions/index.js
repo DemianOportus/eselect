@@ -24,9 +24,7 @@ exports.checkout = functions.https.onCall(async (data, context) => {
   let price = serviceInfo.price * 100;
   price = Number(price.toFixed());
 
-  const stripe = require("stripe")(
-    "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"
-  );
+  const stripe = require("stripe")(`${functions.config().stripe.key}`);
   const session = await stripe.checkout.sessions.create({
     line_items: [
       {
