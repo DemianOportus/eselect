@@ -59,15 +59,6 @@ export function AuthProvider(props) {
     });
   }
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log(user);
-      setUser(user);
-    } else {
-      console.log("no user");
-    }
-  });
-
   let value = {
     user: user,
     signup: signUp,
