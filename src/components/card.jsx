@@ -42,7 +42,6 @@ export default function MultiActionAreaCard(props) {
         </CardContent>
         <CardActions>
           <Button
-            href="https://squareup.com/appointments/book/3mxfn22nd0pclk/LATYFHKVG6P0T/start"
             size="small"
             color="primary"
             sx={{
