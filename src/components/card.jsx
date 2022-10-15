@@ -3,15 +3,27 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Button, CardActions } from "@mui/material";
+import ServiceDialog from "../components/ServiceDialog";
+import { RedirectProvider } from "../components/RedirectContext";
+import { useState } from "react";
 
 export default function MultiActionAreaCard(props) {
+  const [modal, setModal] = useState(false);
+
+  function handleDialogClose() {
+    setModal(false);
+  }
+  function handleDialogOpen() {
+    setModal(true);
+  }
+
   return (
-    <Card
-      className="serviceCards"
-      sx={{ display: "inline-block", margin: "2%", width: "300px" }}
-    >
-      <CardActionArea href="https://squareup.com/appointments/book/3mxfn22nd0pclk/LATYFHKVG6P0T/start">
+    <>
+      <Card
+        className="serviceCards"
+        sx={{ display: "inline-block", margin: "2%", width: "300px" }}
+      >
         <CardMedia
           component="img"
           height="200"
@@ -28,22 +40,29 @@ export default function MultiActionAreaCard(props) {
             {props.service}
           </Typography>
         </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button
-          href="https://squareup.com/appointments/book/3mxfn22nd0pclk/LATYFHKVG6P0T/start"
-          size="small"
-          color="primary"
-          sx={{
-            textTransform: "none",
-            paddingTop: 0,
-            paddingLeft: "3%",
-            fontFamily: "Montserrat",
-          }}
-        >
-          Book now
-        </Button>
-      </CardActions>
-    </Card>
+        <CardActions>
+          <Button
+            href="https://squareup.com/appointments/book/3mxfn22nd0pclk/LATYFHKVG6P0T/start"
+            size="small"
+            color="primary"
+            sx={{
+              textTransform: "none",
+              paddingTop: 0,
+              paddingLeft: "3%",
+              fontFamily: "Montserrat",
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              handleDialogOpen();
+            }}
+          >
+            Book now
+          </Button>
+        </CardActions>
+      </Card>
+      <RedirectProvider>
+        <ServiceDialog open={modal} close={handleDialogClose} />
+      </RedirectProvider>
+    </>
   );
 }
