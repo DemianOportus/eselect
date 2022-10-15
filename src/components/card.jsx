@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
+
 import ServiceDialog from "../components/ServiceDialog";
 import { RedirectProvider } from "../components/RedirectContext";
 import { useState } from "react";
@@ -57,11 +58,11 @@ export default function MultiActionAreaCard(props) {
           >
             Book now
           </Button>
+          <RedirectProvider>
+            <ServiceDialog open={modal} close={handleDialogClose} />
+          </RedirectProvider>
         </CardActions>
       </Card>
-      <RedirectProvider>
-        <ServiceDialog open={modal} close={handleDialogClose} />
-      </RedirectProvider>
     </>
   );
 }
